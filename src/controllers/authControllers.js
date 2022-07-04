@@ -67,11 +67,12 @@ export async function loginUser(req, res) {
     
         if(user && bcrypt.compareSync(password, user.password)) {
             const token = uuid();        
-				await db.collection("sessions").insertOne({
+				const session = await db.collection("sessions").insertOne({
 					userId: user._id,
+          name: user.name,
 					token
 				})
-            res.status(200).send(`${token}`)
+            res.status(200).send(`${session}`)
         } else {
             res.status(401).send("Usuário ou senha incorretos")
         }

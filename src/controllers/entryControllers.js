@@ -16,7 +16,7 @@ export async function newEntry(req, res) {
 
     const newEntrySchema = joi.object({
         description: joi.string().required(),
-        value: joi.number().positive().required(),
+        value: joi.string().regex(/^[0-9,]*$/).required(),
         type: joi.string().valid('debit', 'credit').required(),
         date: joi.string().required(),
     })
