@@ -72,7 +72,7 @@ export async function loginUser(req, res) {
           name: user.name,
 					token
 				})
-            res.status(200).send(`${session}`)
+            res.status(200).send(`${token}`)
         } else {
             res.status(401).send("Usuário ou senha incorretos")
         }
