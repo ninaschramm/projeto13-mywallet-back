@@ -16,8 +16,9 @@ export async function newEntry(req, res) {
 
     const newEntrySchema = joi.object({
         description: joi.string().required(),
-        value: joi.number().required(),
+        value: joi.string().required(),
         type: joi.string().valid('debit', 'credit').required(),
+        date: joi.string().required(),
     })
 
     const { authorization } = req.headers;
