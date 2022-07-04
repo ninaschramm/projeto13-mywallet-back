@@ -43,7 +43,7 @@ export async function newEntry(req, res) {
           return res.status(422).send(`${validation.error}`)  
         }
         
-        await db.collection("entries").insertOne({ ...newEntry, user: user._id })
+        await db.collection("entries").insertOne({ ...newEntry, user: user._id, username: user.name })
         
          return res.status(201).send("");
     } else {

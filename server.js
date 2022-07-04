@@ -26,4 +26,6 @@ server.use(function (req, res, next) {
 
 server.use(authRouter, entryRouter);
 
-server.listen(process.env.PORT, () => console.log(`server is listening on port ${process.env.PORT}`))
+const PORT = process.env.PORT || 5010
+
+server.listen(PORT, () => console.log(`server is listening on port ${PORT}`))
