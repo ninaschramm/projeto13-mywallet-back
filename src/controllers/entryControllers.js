@@ -67,10 +67,12 @@ export async function getEntries(req, res) {
       const user = await db.collection("users").findOne({ 
           _id: session.userId 
       })
+
+      const username = user.name;
   
     if(user) {
         const entryList = await db.collection("entries").find({ user: user._id }).toArray();        
-         return res.send(entryList);
+         return res.send(entryList, username);
     } else {
      return res.sendStatus(401);
     }
