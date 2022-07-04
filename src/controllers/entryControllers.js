@@ -72,7 +72,7 @@ export async function getEntries(req, res) {
   
     if(user) {
         const entryList = await db.collection("entries").find({ user: user._id }).toArray();        
-         return res.send(entryList, username);
+         return res.send(entryList);
     } else {
      return res.sendStatus(401);
     }
